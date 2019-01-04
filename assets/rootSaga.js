@@ -1,9 +1,11 @@
 import { put, takeEvery, call, all, select } from 'redux-saga/effects'
 
 import {
-    handleLoadQuakes,
+    watchRefreshQuakes,
 } from './modules/My/sagas';
 
 export default function* rootSaga() {
-    yield call(handleLoadQuakes);
+    yield all([
+        watchRefreshQuakes(),
+    ]);
 }

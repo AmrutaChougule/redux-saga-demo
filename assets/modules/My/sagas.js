@@ -7,6 +7,7 @@ function fetchQuakes() {
 
 export function* handleLoadQuakes() {
     try {
+        console.log('handleLoadQuakes');
         let resp = yield call(fetchQuakes);
 
         yield put({
@@ -16,4 +17,8 @@ export function* handleLoadQuakes() {
     } catch (e) {
         console.error(e);
     }
+}
+
+export function* watchRefreshQuakes() {
+    yield takeEvery('REFRESH_QUAKES', handleLoadQuakes);
 }

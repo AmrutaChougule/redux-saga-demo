@@ -1,6 +1,6 @@
 Companion code to https://viastudio.com/a-very-basic-intro-to-react-redux-saga
 
-This version uses React + react-redux only.
+This version uses React + react-redux + redux-saga.
 
 ## Usage
 

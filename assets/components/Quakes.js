@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 import store from '../store';
 
+import { action } from '../modules/My/actions';
+
 class Quakes extends React.Component {
     render() {
         const { quakes } = this.props;
@@ -13,19 +15,24 @@ class Quakes extends React.Component {
         }
 
         return (
-            <ul>
-            {
-                quakes.map((quake, idx) => {
-                    const { properties: { detail, title } } = quake;
+            <>
+                <a href="#" onClick={e => {
+                    action('REFRESH_QUAKES');
+                }}>[refresh]</a>
+                <ul>
+                {
+                    quakes.map((quake, idx) => {
+                        const { properties: { detail, title } } = quake;
 
-                    return (
-                        <li key={`link_${idx}`}>
-                            <a href={detail}>{title}</a>
-                        </li>        
-                    )
-                })
-            }
-            </ul>
+                        return (
+                            <li key={`link_${idx}`}>
+                                <a href={detail}>{title}</a>
+                            </li>        
+                        )
+                    })
+                }
+                </ul>
+            </>
         );
     }
 }

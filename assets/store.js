@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
 import rootSaga from './rootSaga';
+import { handleLoadQuakes } from './modules/My/sagas';
 
 import { myReducer } from './modules/My/reducer';
 
@@ -18,6 +19,7 @@ const store = createStore(
     composeEnhancers(applyMiddleware(sagaMiddleware))
 );
 
+sagaMiddleware.run(handleLoadQuakes);
 sagaMiddleware.run(rootSaga);
 
 export default store;
